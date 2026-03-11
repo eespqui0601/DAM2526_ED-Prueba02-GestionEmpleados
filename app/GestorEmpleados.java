@@ -60,18 +60,13 @@ public class GestorEmpleados {
 	}
 	
 	public void listarTodos() {
-		plantilla.getEmpleadosPorNombre("filtroNombre");
-		listarEmpleados();
-		//Obtiene todos los empleados de la plantilla y los muestra. Usa plantilla.getEmpleadosPorNombre y listarEmpleados.
+		String entradaUsuario = consola.leerTexto("Introduzca el filtro por el que quiere buscar los empleados: "); //Solicita al usuario un texto de filtro.
+		listarEmpleados(plantilla.getEmpleadosPorNombre(entradaUsuario)); //Obtiene todos los empleados de la plantilla y los muestra.
 	}
 	
-	public void listarPorFiltro() {
-		plantilla.getEmpleadosPorNombre("filtroNombre");
-		listarEmpleados();
-		//Solicita al usuario un texto de filtro. 
-		//Obtiene los empleados segun el filtro.
-		//Muestra los empleados.
-		//Usa plantilla.getEmpleadosPorNombre y listarEmpleados.
+	public void listarPorFiltro() { 
+		String entradaUsuario = consola.leerTexto("Introduzca el filtro por el que quiere buscar los empleados: "); //Solicita al usuario un texto de filtro.
+		listarEmpleados(plantilla.getEmpleadosPorNombre(entradaUsuario)); //Obtiene los empleados segun el filtro y los muestra. 
 	}
 	
 	public void listarEmpleados(List<Empleado> empleados) {
@@ -86,11 +81,12 @@ public class GestorEmpleados {
 			System.out.printf("%d- %s %s %.2f €", counter, nombre, apellido, sueldo);
 		}
 		//Muestra una lista de empleados.
-		//Formato con el que se deben mostra: N- Nombre Apellidos Sueldo €.
+		//Formato con el que se deben mostrar: N- Nombre Apellidos Sueldo €.
 	}
 	
 	public void ordenarPorNombre(List<Empleado> empleados) {
-		Collections.sort(plantilla.getEmpleadosPorNombre("filtroNombre"), Comparator.comparing(Empleado::getNombre)); //Ordenar lista de empleados alfabeticamente por nombre. 
+		String entradaUsuario = consola.leerTexto("Introduzca el filtro por el que quiere buscar los empleados: ");  //Solicita al usuario un texto de filtro.
+		Collections.sort(plantilla.getEmpleadosPorNombre(entradaUsuario), Comparator.comparing(Empleado::getNombre)); //Ordenar lista de empleados alfabeticamente por nombre. 
 	}
 
 }
