@@ -2,7 +2,9 @@ package app;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class GestorEmpleados {
 	
@@ -53,33 +55,42 @@ public class GestorEmpleados {
 			//Solicitar datos necesarios para el empleado.
 		}
 		else {
-			System.out.println("ERROR: Debes seleccionar el 1 o el 2.");
+			consola.imprimir("ERROR: Debes seleccionar el 1 o el 2.");
 		}
 	}
 	
 	public void listarTodos() {
-		plantilla.getEmpleadosPorNombre(filtroNombre);
+		plantilla.getEmpleadosPorNombre("filtroNombre");
 		listarEmpleados();
 		//Obtiene todos los empleados de la plantilla y los muestra. Usa plantilla.getEmpleadosPorNombre y listarEmpleados.
 	}
 	
 	public void listarPorFiltro() {
+		plantilla.getEmpleadosPorNombre("filtroNombre");
+		listarEmpleados();
 		//Solicita al usuario un texto de filtro. 
 		//Obtiene los empleados segun el filtro.
 		//Muestra los empleados.
 		//Usa plantilla.getEmpleadosPorNombre y listarEmpleados.
 	}
 	
-	public void listarEmpleados() {
-		int counter;
-		List<Empleado> lista = ordenarPorNombre(listaEmpleados);
-		System.out.printf("%d- %s %s %.f €", counter, getNombre(), getApellidos(), getSueldo());
+	public void listarEmpleados(List<Empleado> empleados) {
+		int counter = 0;
+		ordenarPorNombre(empleados);
+		ListIterator<Empleado> iterator = empleados.listIterator();
+		while(iterator.hasNext()) {
+			counter++;
+			String nombre = iterator.next().getNombre();
+			String apellido = iterator.previous().getApellidos();
+			double sueldo = iterator.next().getSueldo();
+			System.out.printf("%d- %s %s %.2f €", counter, nombre, apellido, sueldo);
+		}
 		//Muestra una lista de empleados.
 		//Formato con el que se deben mostra: N- Nombre Apellidos Sueldo €.
 	}
 	
 	public void ordenarPorNombre(List<Empleado> empleados) {
-		Collections.sort(plantilla.getEmpleadosPorNombre(filtroNombre), Comparator.comparing(Empleado::getNombre)); //Ordenar lista de empleados alfabeticamente por nombre. 
+		Collections.sort(plantilla.getEmpleadosPorNombre("filtroNombre"), Comparator.comparing(Empleado::getNombre)); //Ordenar lista de empleados alfabeticamente por nombre. 
 	}
 
 }

@@ -11,15 +11,18 @@ public class Consola implements EntradaSalida{
 	}
 	
 	public void imprimir(String texto) {
-		
+		System.out.print(texto);
 	}
 	
 	public void imprimirLinea(String texto) {
-		
+		System.out.println(texto);
 	}
 	
 	public String leerTexto(String mensaje) {
-		return null;
+		System.out.println(mensaje);
+		String entradaUsuario = sc.nextLine();
+		//Capturar excepcion y mostrar mensaje de error. 
+		return entradaUsuario;
 	}
 	
 	public int leerEntero(String mensaje) {
