@@ -11,11 +11,18 @@ public class Plantilla {
 	}
 	
 	public void agregarEmpleado(Empleado empleado) {
-		
+		empleados.add(empleado);
 	}
 	
 	public List<Empleado> getEmpleadosPorNombre(String filtroNombre) {
-		return null;
+		List<Empleado> lista = empleados;
+		if (filtroNombre == "") {
+			return lista;
+		} else {
+			//Devolver lista de empleados cuyo nombre o apellidos contiene el texto indicado.
+			//Se ignoran mayusculas y minusculas.
+			return lista;
+		}
 	}
 
 }

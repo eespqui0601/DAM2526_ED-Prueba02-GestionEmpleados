@@ -10,7 +10,7 @@ public interface EntradaSalida {
 	
 	public int leerEntero(String mensaje);
 	
-	public Double leerImporte(String mensaje);
+	public double leerImporte(String mensaje);
 	
 	public void mostrarMenu();
 	

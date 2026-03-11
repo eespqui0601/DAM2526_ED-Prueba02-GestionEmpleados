@@ -15,7 +15,7 @@ public class Comercial extends Empleado{
 
 	@Override
 	public double getSueldo() {
-		return 0;
+		return sueldoBase * (0.1 * ventas);
 	}
 
 }
