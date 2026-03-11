@@ -49,10 +49,20 @@ public class GestorEmpleados {
 		consola.pausa();
 		int entradaUsuario = consola.leerEntero("Seleccione una de las opciones introduciendo el numero correspondiente: ");
 		if(entradaUsuario == 1) {
-			//Solicitar datos necesarios para el empleado.
+			String dni = consola.leerTexto("Introduzca el dni: ");
+			String nombre = consola.leerTexto("Introduzca el nombre: ");
+			String apellidos = consola.leerTexto("Introduzca el apellido: ");
+			double sueldo = consola.leerImporte("Introduzca el sueldo: ");
+			int categoria = consola.leerEntero("Introduzca la categoria: ");
+			Tecnico tecnico = new Tecnico(dni, nombre, apellidos, sueldo, categoria);
 		}
 		else if (entradaUsuario == 2) {
-			//Solicitar datos necesarios para el empleado.
+			String dni = consola.leerTexto("Introduzca el dni: ");
+			String nombre = consola.leerTexto("Introduzca el nombre: ");
+			String apellidos = consola.leerTexto("Introduzca el apellido: ");
+			double sueldo = consola.leerImporte("Introduzca el sueldo: ");
+			double ventas = consola.leerImporte("Introduzca el numero de ventas: ");
+			Comercial comercial = new Comercial(dni, nombre, apellidos, sueldo, ventas); 
 		}
 		else {
 			consola.imprimir("ERROR: Debes seleccionar el 1 o el 2.");
