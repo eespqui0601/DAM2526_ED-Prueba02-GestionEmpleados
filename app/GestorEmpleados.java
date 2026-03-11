@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class GestorEmpleados {
@@ -56,6 +58,8 @@ public class GestorEmpleados {
 	}
 	
 	public void listarTodos() {
+		plantilla.getEmpleadosPorNombre(filtroNombre);
+		listarEmpleados();
 		//Obtiene todos los empleados de la plantilla y los muestra. Usa plantilla.getEmpleadosPorNombre y listarEmpleados.
 	}
 	
@@ -67,13 +71,15 @@ public class GestorEmpleados {
 	}
 	
 	public void listarEmpleados() {
-		ordenarPorNombre(listaEmpleados);
+		int counter;
+		List<Empleado> lista = ordenarPorNombre(listaEmpleados);
+		System.out.printf("%d- %s %s %.f €", counter, getNombre(), getApellidos(), getSueldo());
 		//Muestra una lista de empleados.
 		//Formato con el que se deben mostra: N- Nombre Apellidos Sueldo €.
 	}
 	
 	public void ordenarPorNombre(List<Empleado> empleados) {
-		//Ordenar lista de empleados alfabeticamente por nombre. 
+		Collections.sort(plantilla.getEmpleadosPorNombre(filtroNombre), Comparator.comparing(Empleado::getNombre)); //Ordenar lista de empleados alfabeticamente por nombre. 
 	}
 
 }
