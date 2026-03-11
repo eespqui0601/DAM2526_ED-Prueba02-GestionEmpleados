@@ -2,7 +2,6 @@ package app;
 
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -83,7 +82,7 @@ public class GestorEmpleados {
 		int counter = 0;
 		ordenarPorNombre(empleados);
 		ListIterator<Empleado> iterator = empleados.listIterator();
-		while(iterator.hasNext()) {
+		while(iterator.hasNext()) { //Recorre la lista y va mostrando los datos. 
 			counter++;
 			String nombre = iterator.next().getNombre();
 			String apellido = iterator.previous().getApellidos();
